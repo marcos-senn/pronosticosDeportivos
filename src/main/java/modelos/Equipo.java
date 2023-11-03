@@ -8,7 +8,9 @@ public class Equipo {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
-	
+	public String toString() {
+		return nombre + descripcion;
+	}
 	//Getters
 	public String getNombre() {
 		return this.nombre;

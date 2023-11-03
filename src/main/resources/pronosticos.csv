@@ -1,5 +1,5 @@
-﻿"Equipo1;Cantgoles1;Cantgoles2;Equipo2"
-"Brasil;2;1;Alemania"
-"Argentina;2;0;Italia"
-"Francia;2;3;España"
-"Inglaterra;3;2;Portugal"
+Equipo1 ;ganaEquipo1;Empate; ganaEquipo2; Equipo2
+Brasil;-;x;-;Alemania
+Argentina;x;-;-;Italia
+Francia;-;-;x;Espa�a
+Inglaterra;x;-;-;Portugal

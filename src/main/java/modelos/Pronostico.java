@@ -11,6 +11,13 @@ public class Pronostico {
         this.resultado = resultado;
     }
     
+    public String toString() {
+    	return "Pronostico [Partido: "+ partido+"\n Equipo: "+equipo+ " Resultado: "+resultado+"]";
+    }
+    
+    public ResultadosEnum getResultado() {
+        return resultado;
+    }
     }
 
 
