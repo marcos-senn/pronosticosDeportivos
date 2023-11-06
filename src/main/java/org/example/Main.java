@@ -24,13 +24,16 @@ System.out.println("Resultados: "+"\n");
 ArrayList<Partido> Resultados = archivo.leerArchivoPartidos(rutaAbsolutaResult);
 System.out.println("Pronósticos: "+"\n");
 ArrayList<Pronostico> Pronosticos = archivo.leerArchivoPronostico(rutaAbsolutaPronost,Resultados);
-System.out.println("Puntaje Persona 1: "+"\n");
-CalculadorPuntaje persona1 = new CalculadorPuntaje();
-int puntajePersona1;
-puntajePersona1 = persona1.calcular(Resultados, Pronosticos);
-System.out.println("[  "+puntajePersona1+"  ]");
 
-
+if(Resultados != null && Pronosticos !=null){
+	System.out.println("Puntaje Persona 1: "+"\n");
+	CalculadorPuntaje persona1 = new CalculadorPuntaje();
+	int puntajePersona1;
+	puntajePersona1 = persona1.calcular(Resultados, Pronosticos);
+	System.out.println("[  "+puntajePersona1+"  ]");
+} else{
+	System.out.println("errores en la lectura de archivo de pronosticos no se puede dar un puntaje");
+}
 	}
 }
     

@@ -69,16 +69,32 @@ public class LectorArchivos {
 				Partido p = leerPartido(alres, i);
 				Equipo equipo = null;
 				ResultadosEnum result = null;
+				int xCount = 0; //contador x
+
 				if(partes[1].equalsIgnoreCase("x")) {
 					equipo = new Equipo(partes[0], "");
 					result = ResultadosEnum.GANA_EQUIPO1;
-				} else if(partes[2].equalsIgnoreCase("x")){
-					equipo = new Equipo(partes[0], "");
-					result = ResultadosEnum.EMPATE;
-				} else if (partes[3].equalsIgnoreCase("x")) {
-					equipo = new Equipo(partes[4], "");
-					result = ResultadosEnum.GANA_EQUIPO2;
+					xCount++;
+
+				} if(partes[2].equalsIgnoreCase("x")){
+					if(xCount == 0){
+						equipo = new Equipo(partes[0], "");
+						result = ResultadosEnum.EMPATE;
+						xCount++;
+					} else {
+						throw new RuntimeException("Error: Más de una 'x' en la misma línea.");
+					}
+
+				} if (partes[3].equalsIgnoreCase("x")) {
+					if(xCount == 0) {
+						equipo = new Equipo(partes[4], "");
+						result = ResultadosEnum.GANA_EQUIPO2;
+						xCount++;
+					} else{
+						throw new RuntimeException("Error: Más de una 'x' en la misma línea.");
+					}
 				}
+
 				
 				q = new Pronostico(p,equipo,result);
 				alpron.add(q);
