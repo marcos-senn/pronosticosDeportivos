@@ -16,7 +16,7 @@ public class Inicio {
 		//System.setProperty("java.net.useSystemProxies", "true");
 LectorArchivos archivo = new LectorArchivos();
 System.out.println("Resultados: "+"\n");
-ArrayList<Partido> Resultados = archivo.leerArchivoPartidos(rutaAbsolutaResult);
+ArrayList<Partido> Resultados = archivo.leerArchivoResultados(rutaAbsolutaResult);
 System.out.println("Pronósticos: "+"\n");
 ArrayList<Pronostico> Pronosticos = archivo.leerArchivoPronostico(rutaAbsolutaPronost,Resultados);
 

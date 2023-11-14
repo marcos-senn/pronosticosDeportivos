@@ -1,5 +1,9 @@
-Equipo1 ;ganaEquipo1;Empate; ganaEquipo2; Equipo2
-Brasil;-;x;-;Alemania
-Argentina;x;-;-;Italia
-Francia;-;-;x;Espa�a
-Inglaterra;x;-;-;Portugal
+Participante;Equipo1 ;ganaEquipo1;Empate; ganaEquipo2; Equipo2
+Maria;Brasil;-;x;-;Alemania
+Maria;Argentina;x;-;-;Italia
+Maria;Francia;-;-;x;Espa�a
+Maria;Inglaterra;x;-;-;Portugal
+Pedro;Brasil;x;-;-;Alemania
+Pedro;Argentina;x;-;-;Italia
+Pedro;Francia;-;x;-;Espa�a
+Pedro;Inglaterra;x;-;-;Portugal
