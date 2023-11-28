@@ -3,7 +3,29 @@ Maria;Brasil;-;x;-;Alemania
 Maria;Argentina;x;-;-;Italia
 Maria;Francia;-;-;x;Espa�a
 Maria;Inglaterra;x;-;-;Portugal
+Maria;Holanda;-;-;x;Ginea
+Maria;Peru;-;-;x;Senegal
+Maria;Turquia;-;x;-;Grecia
+Maria;Chile;-;-;x;Uruguay
+Maria;Nueva Zelanda;x;-;-;Australia
+Maria;Bolivia;-;x;-;Paraguay
 Pedro;Brasil;x;-;-;Alemania
 Pedro;Argentina;x;-;-;Italia
 Pedro;Francia;-;x;-;Espa�a
 Pedro;Inglaterra;x;-;-;Portugal
+Pedro;Holanda;x;-;-;Ginea
+Pedro;Peru;-;x;-;Senegal
+Pedro;Turquia;-;-;x;Grecia
+Pedro;Nueva Zelanda;-;x;-;Australia
+Pedro;Chile;x;-;-;Uruguay
+Pedro;Bolivia;-;-;x;Paraguay
+Marcos;Brasil;x;-;-;Alemania
+Marcos;Argentina;x;-;-;Italia
+Marcos;Francia;-;x;-;Espa�a
+Marcos;Inglaterra;x;-;-;Portugal
+Marcos;Holanda;x;-;-;Ginea
+Marcos;Peru;-;-;x;Senegal
+Marcos;Chile;-;-;x;Uruguay
+Marcos;Turquia;-;-;x;Grecia
+Marcos;Nueva Zelanda;-;x;-;Australia
+Marcos;Bolivia;x;-;-;Paraguay

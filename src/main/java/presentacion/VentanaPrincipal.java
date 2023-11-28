@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
 
+import modelos.Partido;
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
