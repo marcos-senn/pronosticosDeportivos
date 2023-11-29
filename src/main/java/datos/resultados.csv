@@ -1,0 +1,16 @@
+codigo_partido,nro_ronda,equipo_1,goles_equipo_1,goles_equipo_2,equipo_2
+1,1,Brasil,0,1,Alemania
+2,1,Argentina,2,0,Italia
+3,1,Francia,2,3,España
+4,2,Inglaterra,1,2,Portugal
+5,2,Holanda,0,3,Ginea
+6,2,Peru,3,2,Senegal
+7,3,Chile,1,1,Uruguay
+8,3,Turquia,2,1,Grecia
+9,3,"Nueva zelanda",1,1,Australia
+10,4,Alemania,0,1,Argentina
+11,4,España,0,3,Portugal
+12,4,Senegal,2,2,Holanda
+13,5,Ginea,1,0,Peru
+14,5,Chile,0,2,Turquia
+15,5,"Nueva Zelanda",3,1,Grecia
