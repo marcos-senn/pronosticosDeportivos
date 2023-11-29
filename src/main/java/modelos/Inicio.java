@@ -48,7 +48,7 @@ public class Inicio {
     public static Object[][] iniciar(String[] args) {
     	String url = "jdbc:mysql://localhost:3306/programa";
         String username = "root";
-        String password = "laracovid19";
+        String password = "admin";
 
         ArrayList<Object[]> puntajes = new ArrayList<>();
 

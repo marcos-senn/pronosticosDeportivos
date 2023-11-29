@@ -17,6 +17,10 @@ public class Pronostico {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Pronostico(Partido partido1, Equipo argentina, ResultadosEnum resultadosEnum) {
+	}
+
+
 	public String toString() {
     	return "Pronostico de "+persona+" [Partido: "+ partido+"\n Equipo: "+equipo+ " Resultado: "+resultado+"]";
     }
@@ -45,7 +49,7 @@ public class Pronostico {
 		this.resultado = resultado;
 	}
 
-	
+
     }
 
 

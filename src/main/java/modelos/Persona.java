@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.ArrayList;
+
 public class Persona {
   private String nombre;
   private String apellido;
@@ -55,10 +57,15 @@ public void setPronost(Pronostico pronost) {
 public int getPuntaje() {
 	return puntaje;
 }
-
+	@Override
+	public String toString() {
+		return nombre;
+	}
 public void setPuntaje(int puntaje) {
 	this.puntaje = puntaje;
 }
-  
-  
+
+
+	public void setPronosticos(ArrayList<Pronostico> pronosticos) {
+	}
 }

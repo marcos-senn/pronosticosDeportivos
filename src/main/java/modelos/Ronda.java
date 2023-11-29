@@ -12,7 +12,14 @@ public Ronda(int nroRonda, Partido[] partidos) {
 
 }
 
-public int getNroRonda() {
+    public Ronda(String number, Partido[] vectorPartidos, int i) {
+    }
+
+	public Ronda() {
+
+	}
+
+	public int getNroRonda() {
 	return nroRonda;
 }
 
