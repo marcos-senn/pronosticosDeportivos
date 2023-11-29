@@ -88,7 +88,7 @@ public class LectorArchivos {
 					}
 				}
 
-				q = new Pronostico(p, equipo, result);
+				q = new Pronostico(p, equipo, result, null);
 				// Obtener el nombre del participante
 				String participante = partes[0];
 

@@ -45,10 +45,12 @@ import negocios.ObtenerDatos;
 	}
 }*/
 public class Inicio {
-    public static void iniciar(String args[]) {
-        String url = "jdbc:mysql://localhost:3306/programa";
+    public static Object[][] iniciar(String[] args) {
+    	String url = "jdbc:mysql://localhost:3306/programa";
         String username = "root";
         String password = "laracovid19";
+
+        ArrayList<Object[]> puntajes = new ArrayList<>();
 
         try {
             ConexionDB conexion = new ConexionDB(url, username, password);
@@ -63,9 +65,9 @@ public class Inicio {
                     ArrayList<Pronostico> pronosticos = entry.getValue();
 
                     CalculadorPuntaje calculadorPuntaje = new CalculadorPuntaje();
-                    int puntaje = calculadorPuntaje.calcular(resultados, pronosticos);
+                    Object[] puntaje = calculadorPuntaje.calcular(resultados, pronosticos);
 
-                    System.out.println("Puntaje de " + participante + ": " + puntaje);
+                    puntajes.add(puntaje);
                 }
             } else {
                 System.out.println("Errores en la lectura de archivo de pronosticos no se puede dar un puntaje");
@@ -75,6 +77,15 @@ public class Inicio {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        
+        Object[][] arrayPuntajes = new Object[puntajes.size()][];
+        for (int i = 0; i < puntajes.size(); i++) {
+            Object[] row = puntajes.get(i);
+            arrayPuntajes[i] = row;
+        }
+
+        return arrayPuntajes;
     }
 }
 
