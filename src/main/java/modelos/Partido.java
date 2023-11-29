@@ -15,6 +15,12 @@ public class Partido {
 
   
 
+	public Partido() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String toString() {
         return "Partido[Resultado: Equipo 1: " + equipo1 + " Goles: " + golesEquipo1 + " | Equipo 2: " + equipo2 + " Goles: " + golesEquipo2 + "]";
     }

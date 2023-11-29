@@ -16,6 +16,10 @@ public class Persona {
 	this.puntaje = puntaje;
 }
 
+public Persona() {
+	// TODO Auto-generated constructor stub
+}
+
 public String getNombre() {
 	return nombre;
 }

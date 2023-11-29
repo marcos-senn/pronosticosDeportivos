@@ -8,6 +8,9 @@ public class Equipo {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
+	public Equipo() {
+		// TODO Auto-generated constructor stub
+	}
 	public String toString() {
 		return nombre + descripcion;
 	}
