@@ -2,10 +2,15 @@ Ronda;Equipo1;golesEquipo1;golesEquipo2;Equipo2
 1;Brasil;0;1;Alemania
 1;Argentina;2;0;Italia
 1;Francia;2;3;Espa�a
-1;Inglaterra;1;2;Portugal
-1;Holanda;0;3;Ginea
+2;Inglaterra;1;2;Portugal
+2;Holanda;0;3;Ginea
 2;Peru;3;2;Senegal
-2;Chile;1;1;Uruguay
+3;Chile;1;1;Uruguay
 3;Turquia;2;1;Grecia
-4;Nueva zelanda;1;1;Australia
-5;Bolivia;0;1;Paraguay
+3;Nueva zelanda;1;1;Australia
+4;Alemania;0;1;Argentina
+4;Espa�a;0;3;Portugal
+4;Senegal;2;2;Holanda
+5;Ginea;1;0;Peru
+5;Chile;0;2;Turquia
+5;Nueva Zelanda;3;1;Grecia

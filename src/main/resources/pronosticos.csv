@@ -1,31 +1,46 @@
-Participante;Equipo1 ;ganaEquipo1;Empate; ganaEquipo2; Equipo2
-Maria;Brasil;-;x;-;Alemania
-Maria;Argentina;x;-;-;Italia
-Maria;Francia;-;-;x;Espaï¿½a
-Maria;Inglaterra;x;-;-;Portugal
-Maria;Holanda;-;-;x;Ginea
-Maria;Peru;-;-;x;Senegal
-Maria;Turquia;-;x;-;Grecia
-Maria;Chile;-;-;x;Uruguay
-Maria;Nueva Zelanda;x;-;-;Australia
-Maria;Bolivia;-;x;-;Paraguay
-Pedro;Brasil;x;-;-;Alemania
-Pedro;Argentina;x;-;-;Italia
-Pedro;Francia;-;x;-;Espaï¿½a
-Pedro;Inglaterra;x;-;-;Portugal
-Pedro;Holanda;x;-;-;Ginea
-Pedro;Peru;-;x;-;Senegal
-Pedro;Turquia;-;-;x;Grecia
-Pedro;Nueva Zelanda;-;x;-;Australia
-Pedro;Chile;x;-;-;Uruguay
-Pedro;Bolivia;-;-;x;Paraguay
-Marcos;Brasil;x;-;-;Alemania
-Marcos;Argentina;x;-;-;Italia
-Marcos;Francia;-;x;-;Espaï¿½a
-Marcos;Inglaterra;x;-;-;Portugal
-Marcos;Holanda;x;-;-;Ginea
-Marcos;Peru;-;-;x;Senegal
-Marcos;Chile;-;-;x;Uruguay
-Marcos;Turquia;-;-;x;Grecia
-Marcos;Nueva Zelanda;-;x;-;Australia
-Marcos;Bolivia;x;-;-;Paraguay
+Participante;Equipo1 ;ganaEquipo1;Empate; ganaEquipo2; Equipo2;codigo_partido
+Maria;Brasil;-;x;-;Alemania;1
+Maria;Argentina;x;-;-;Italia;2
+Maria;Francia;-;-;x;Espaï¿½ï;3
+Maria;Inglaterra;x;-;-;Portugal;4
+Maria;Holanda;-;-;x;Ginea;5
+Maria;Peru;-;-;x;Senegal;6
+Maria;Chile;-;x;-;Uruguay;7
+Maria;Turquia;-;-;x;Grecia;8
+Maria;Nueva zelanda;x;-;-;Australia;9
+Maria;Alemania;-;x;-;Argentina;10
+Maria;Espaï¿½ï;x;-;-;Portugal;11
+Maria;Senegal;x;-;-;Holanda;12
+Maria;Ginea;-;x;-;Peru;13
+Maria;Chile;x;-;-;Turquia;14
+Maria;Nueva Zelanda;x;-;-;Grecia;15
+Pedro;Brasil;-;x;-;Alemania;1
+Pedro;Argentina;-;-;x;Italia;2
+Pedro;Francia;-;x;-;Espaï¿½ï;3
+Pedro;Inglaterra;x;-;-;Portugal;4
+Pedro;Holanda;-;-;x;Ginea;5
+Pedro;Peru;x;-;-;Senegal;6
+Pedro;Chile;x;-;-;Uruguay;7
+Pedro;Turquia;-;x;-;Grecia;8
+Pedro;Nueva zelanda;x;-;-;Australia;9
+Pedro;Alemania;x;-;-;Argentina;10
+Pedro;Espaï¿½ï;-;-;x;Portugal;11
+Pedro;Senegal;-;-;x;Holanda;12
+Pedro;Ginea;-;-;x;Peru;13
+Pedro;Chile;-;x;-;Turquia;14
+Pedro;Nueva Zelanda;x;-;-;Grecia;15
+Marcos;Brasil;-;x;-;Alemania;1
+Marcos;Argentina;x;-;-;Italia;2
+Marcos;Francia;x;-;-;Espaï¿½ï;3
+Marcos;Inglaterra;-;x;-;Portugal;4
+Marcos;Holanda;x;-;-;Ginea;5
+Marcos;Peru;-;-;x;Senegal;6
+Marcos;Chile;x;-;-;Uruguay;7
+Marcos;Turquia;-;-;x;Grecia;8
+Marcos;Nueva zelanda;-;x;-;Australia;9
+Marcos;Alemania;x;-;-;Argentina;10
+Marcos;Espaï¿½ï;x;-;-;Portugal;11
+Marcos;Senegal;-;-;x;Holanda;12
+Marcos;Ginea;-;-;x;Peru;13
+Marcos;Chile;-;x;-;Turquia;14
+Marcos;Nueva Zelanda;x;-;-;Grecia;15
