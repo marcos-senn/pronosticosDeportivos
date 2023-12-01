@@ -5,17 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.TableCellRenderer;
-
+import javax.swing.table.DefaultTableModel;
 import org.example.Main;
 
 import javax.swing.JTextField;
-import javax.swing.JToolBar;
-
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 
 import javax.swing.ButtonGroup;
@@ -23,21 +18,25 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerListener;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JCheckBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import datos.ConexionDB;
 import javax.swing.JLabel;
-import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 
+import modelos.IngresarDatos;
 import modelos.Inicio;
 import modelos.Partido;
+import negocios.ObtenerDatos;
+
 import javax.swing.SwingConstants;
-import java.awt.Insets;
 import java.awt.Dimension;
 import javax.swing.JTable;
+import java.awt.Choice;
+import javax.swing.ScrollPaneConstants;
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -45,7 +44,7 @@ public class VentanaPrincipal extends JFrame {
 	private JTextField textFieldNombre;
 	private CardLayout cardLayout = new CardLayout();
 	protected Container panel2;
-	private JTable table;
+	private JTable table_1;
 	/**
 	 * Launch the application.
 	 */
@@ -63,7 +62,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 	public VentanaPrincipal() {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setBounds(100, 100, 850, 600);
+	    setBounds(100, 100, 799, 600);
 	    contentPane = new JPanel();
 	    contentPane.setBackground(new Color(64, 128, 128));
 	    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -92,58 +91,77 @@ public class VentanaPrincipal extends JFrame {
 	    panel.setBackground(new Color(0, 100, 0));
 	    panel.setLayout(null);
 
-	    JToolBar toolBar = new JToolBar();
-	    toolBar.setOrientation(SwingConstants.VERTICAL);
-	    toolBar.setSize(413, 259);
-	    toolBar.setLocation(203, 50);
+	    JLabel item1 = new JLabel("1. Mostrar puntajes");
+	    item1.setForeground(Color.BLACK);
+	    item1.setFont(new Font("Georgia", Font.BOLD, 25));
+	    item1.setBounds(173, 118, 361, 50);
+	    item1.addMouseListener(new MouseAdapter() {
+	        public void mouseClicked(MouseEvent e) {
+	            cardLayout.show(panelPrincipal, "Panel 1");
+	        }
+	    });
+	    panel.add(item1);
 
-	    JButton item1 = new JButton("1. Mostrar puntajes");
-	    item1.setFont(new Font("Georgia", Font.BOLD, 17));
-	    item1.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	cardLayout.show(panelPrincipal, "Panel 1");
+	    JLabel item2 = new JLabel("2. Cargar datos");
+	    item2.setForeground(Color.BLACK);
+	    item2.setFont(new Font("Georgia", Font.BOLD, 25));
+	    item2.setBounds(173, 193, 475, 50);
+	    item2.addMouseListener(new MouseAdapter() {
+	        public void mouseClicked(MouseEvent e) {
+	            cardLayout.show(panelPrincipal, "Panel 2");
 	        }
 	    });
-	    toolBar.add(item1);
+	    panel.add(item2);
 
-	    JButton item4 = new JButton("4. Salir");
-	    item4.setFont(new Font("Georgia", Font.BOLD, 16));
-	    item4.setHorizontalAlignment(SwingConstants.LEFT);
-	    item4.setVerticalAlignment(SwingConstants.TOP);
-	    item4.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	System.exit(0);
+	    JLabel item3 = new JLabel("3. Apostar por un pronóstico");
+	    item3.setForeground(Color.BLACK);
+	    item3.setFont(new Font("Georgia", Font.BOLD, 25));
+	    item3.setBounds(173, 268, 475, 50);
+	    item3.addMouseListener(new MouseAdapter() {
+	        public void mouseClicked(MouseEvent e) {
+	            cardLayout.show(panelPrincipal, "Panel 3");
 	        }
 	    });
-	    
-	    JButton item2 = new JButton("2. Cargar datos");
-	    item2.setFont(new Font("Georgia", Font.BOLD, 17));
-	    item2.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	cardLayout.show(panelPrincipal, "Panel 2");
-	        }
-	    });
-	    toolBar.add(item2);
-	    
-	    JButton item3 = new JButton("3. Apostar por un pronóstico");
-	    item3.setFont(new Font("Georgia", Font.BOLD, 17));
-	    item3.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	cardLayout.show(panelPrincipal, "Panel 3");
-	        }
-	    });
-	    toolBar.add(item2);
-	    toolBar.add(item3); 
-	    toolBar.add(item4);
+	    panel.add(item3);
 
-	    panel.add(toolBar, BorderLayout.PAGE_START);
-	   
-	    
+	    JLabel item4 = new JLabel("4. Salir");
+	    item4.setForeground(Color.BLACK);
+	    item4.setFont(new Font("Georgia", Font.BOLD, 25));
+	    item4.setBounds(173, 340, 475, 50);
+	    item4.addMouseListener(new MouseAdapter() {
+	        public void mouseClicked(MouseEvent e) {
+	            System.exit(0);
+	        }
+	    });
+	    panel.add(item4);
+
 	    JLabel lblPagPrincipal = new JLabel("Pagina principal de pronosticos futbolísticos");
+	    lblPagPrincipal.setForeground(Color.BLACK);
+	    lblPagPrincipal.setBounds(100, 11, 645, 46);
 	    lblPagPrincipal.setBackground(new Color(255, 255, 255));
-	    lblPagPrincipal.setFont(new Font("Georgia", Font.PLAIN, 15));
-	    lblPagPrincipal.setBounds(265, 11, 318, 28);
+	    lblPagPrincipal.setFont(new Font("Georgia", Font.PLAIN, 30));
 	    panel.add(lblPagPrincipal);
+
+	    JPanel panel_1 = new JPanel();
+	    panel_1.setBackground(Color.LIGHT_GRAY);
+	    panel_1.setBounds(80, 11, 631, 46);
+	    panel.add(panel_1);
+	    
+	    JPanel panel_2 = new JPanel();
+	    panel_2.setBounds(161, 118, 397, 50);
+	    panel.add(panel_2);
+	    
+	    JPanel panel_3 = new JPanel();
+	    panel_3.setBounds(161, 193, 397, 50);
+	    panel.add(panel_3);
+	    
+	    JPanel panel_4 = new JPanel();
+	    panel_4.setBounds(161, 268, 397, 50);
+	    panel.add(panel_4);
+	    
+	    JPanel panel_5 = new JPanel();
+	    panel_5.setBounds(161, 340, 397, 50);
+	    panel.add(panel_5);
 
 	    return panel;
 	}
@@ -154,7 +172,7 @@ public class VentanaPrincipal extends JFrame {
 	    panel1.setLayout(null);
 	    
 	    JButton btnVolver1 = new JButton("Volver");
-	    btnVolver1.setBounds(731, 527, 93, 23);
+	    btnVolver1.setBounds(684, 532, 93, 23);
 	    btnVolver1.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	cardLayout.show(panelPrincipal, "Panel 0");
@@ -162,10 +180,10 @@ public class VentanaPrincipal extends JFrame {
 	    });
 	    panel1.add(btnVolver1);
 	    
-	    JLabel lblPuntajes = new JLabel("------------------------------------------------- Puntajes -------------------------------------------------");
+	    JLabel lblPuntajes = new JLabel("---------------------------------------------- Puntajes ----------------------------------------------");
 	    lblPuntajes.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblPuntajes.setFont(new Font("Tahoma", Font.PLAIN, 18));
-	    lblPuntajes.setBounds(10, 11, 814, 49);
+	    lblPuntajes.setBounds(0, 10, 787, 49);
 	    panel1.add(lblPuntajes);
 	    
 		String[] args = Main.commandLineArgs;
@@ -176,7 +194,7 @@ public class VentanaPrincipal extends JFrame {
 	        data[i + 1] = datosIniciales[i];
 	    }
 	    
-	    String[] columnNames = {"Nombre", "Puntajes"};
+	    
 	    JTable table = new JTable(data, new String[] {"", ""}); 
 	    table.setBounds(145, 71, 546, 323);
 	    
@@ -201,10 +219,10 @@ public class VentanaPrincipal extends JFrame {
 	    });
 	    panel2.add(btnVolver2);
 	    
-	    JLabel lblCargaDe = new JLabel("-------------------------------------------- Carga de partidos --------------------------------------------");
+	    JLabel lblCargaDe = new JLabel("----------------------------------------- Carga de partidos -----------------------------------------");
 	    lblCargaDe.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblCargaDe.setFont(new Font("Tahoma", Font.PLAIN, 18));
-	    lblCargaDe.setBounds(10, 11, 814, 49);
+	    lblCargaDe.setBounds(-15, 6, 814, 49);
 	    panel2.add(lblCargaDe);
 	    
 	    return panel2;
@@ -224,53 +242,59 @@ public class VentanaPrincipal extends JFrame {
         
         contentPane.setLayout(null);
 
-        JButton btnCalcPuntaje = new JButton("Calcular puntaje");
+        JButton btnCalcPuntaje = new JButton("Ver puntaje");
+        btnCalcPuntaje.setForeground(Color.BLACK);
 		btnCalcPuntaje.setFont(new Font("Verdana", Font.PLAIN, 11));
-		btnCalcPuntaje.setBounds(454, 413, 148, 23);
+		btnCalcPuntaje.setBounds(310, 456, 148, 23);
+		btnCalcPuntaje.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	cardLayout.show(panelPrincipal, "Panel 1");
+	        }
+	    });
 		panel3.add(btnCalcPuntaje);
 		
-		JLabel lblSelecOpcion = new JLabel("Seleccione una opcion:");
-		lblSelecOpcion.setBackground(new Color(255, 255, 255));
-		lblSelecOpcion.setBounds(67, 328, 165, 14);
-		panel3.add(lblSelecOpcion);
-		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(313, 95, 86, 20);
+		textFieldNombre.setBounds(342, 93, 86, 20);
 		panel3.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		JLabel lbl_ingreseNombre = new JLabel("Ingrese su nombre y presione Enter:");
-		lbl_ingreseNombre.setBounds(67, 98, 248, 14);
+		lbl_ingreseNombre.setForeground(Color.BLACK);
+		lbl_ingreseNombre.setBounds(284, 67, 248, 14);
 		panel3.add(lbl_ingreseNombre);
 		
-		JLabel lblPartido = new JLabel("Partido:");
-		lblPartido.setBounds(67, 146, 59, 14);
+		JLabel lblPartido = new JLabel("Partidos:");
+		lblPartido.setForeground(Color.BLACK);
+		lblPartido.setBounds(175, 209, 59, 14);
 		panel3.add(lblPartido);
 		
-		JFormattedTextField frmtdtxtfldInfoPartido = new JFormattedTextField();
-		frmtdtxtfldInfoPartido.setText("(ver como traigo la info a este panel)");
-		frmtdtxtfldInfoPartido.setBounds(197, 139, 349, 121);
-		panel3.add(frmtdtxtfldInfoPartido);
-		
 		JRadioButton rdbtnGanaEquipo1 = new JRadioButton("Gana equipo 1");
-		rdbtnGanaEquipo1.setBounds(283, 324, 127, 23);
+		rdbtnGanaEquipo1.setForeground(Color.BLACK);
+		rdbtnGanaEquipo1.setBounds(191, 401, 127, 23);
 		panel3.add(rdbtnGanaEquipo1);
 		
 		JRadioButton rdbtnEmpate = new JRadioButton("Empate");
-		rdbtnEmpate.setBounds(428, 324, 86, 23);
+		rdbtnEmpate.setForeground(Color.BLACK);
+		rdbtnEmpate.setBounds(330, 401, 86, 23);
 		panel3.add(rdbtnEmpate);
 		
 		JRadioButton rdbtnGanaEquipo2 = new JRadioButton("Gana equipo 2");
-		rdbtnGanaEquipo2.setBounds(533, 324, 127, 23);
+		rdbtnGanaEquipo2.setForeground(Color.BLACK);
+		rdbtnGanaEquipo2.setBounds(428, 401, 127, 23);
 		panel3.add(rdbtnGanaEquipo2);
 		
 		ButtonGroup grupo1 = new ButtonGroup();//hace que solo se pueda seleccionar una opción
 		grupo1.add(rdbtnGanaEquipo1);
 		grupo1.add(rdbtnEmpate);
 		grupo1.add(rdbtnGanaEquipo2);
+
+		boolean ganaEquipo1 = rdbtnGanaEquipo1.isSelected();
+		boolean empate = rdbtnEmpate.isSelected();
+		boolean ganaEquipo2 = rdbtnGanaEquipo2.isSelected();
 		
 		JButton btnVolver3 = new JButton("Volver");
-		btnVolver3.setBounds(731, 527, 93, 23);
+		btnVolver3.setForeground(Color.BLACK);
+		btnVolver3.setBounds(684, 532, 93, 23);
 		btnVolver3.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	cardLayout.show(panelPrincipal, "Panel 0");
@@ -278,36 +302,114 @@ public class VentanaPrincipal extends JFrame {
 	    });
 		panel3.add(btnVolver3);
 		
-		JLabel lblPronstico = new JLabel("------------------------------------------------- Pronóstico -------------------------------------------------");
+		JLabel lblPronstico = new JLabel("---------------------------------------------- Pronóstico ----------------------------------------------");
+		lblPronstico.setForeground(Color.BLACK);
 		lblPronstico.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPronstico.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPronstico.setBounds(10, 11, 814, 49);
+		lblPronstico.setBounds(-17, 6, 814, 49);
 		panel3.add(lblPronstico);
 		
+		
+		DefaultTableModel model = new DefaultTableModel();
+		table_1 = new JTable();
+
+		// Agregar las columnas al modelo de la tabla
+		model.addColumn("N°");
+		model.addColumn("Equipo 1");
+		model.addColumn("VS");
+		model.addColumn("Equipo 2");
+
+		ConexionDB conexion = null;
+		try {
+			conexion = new ConexionDB("jdbc:mysql://localhost:3306/programa", "root", "admin");
+		} catch (ClassNotFoundException | SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		ObtenerDatos obtenerDatos = new ObtenerDatos(conexion);
+
+		ArrayList<Partido> partidos = null;
+		try {
+			partidos = obtenerDatos.consultarDatosResultados();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		int numero = 1;
+		for (Partido partido : partidos) {
+		    model.addRow(new Object[] {
+		        numero,
+		        partido.getEquipo1().getNombre(),
+		        "vs",
+		        partido.getEquipo2().getNombre()
+		    });
+		    numero++;
+		}
+		
+
+		table_1.setModel(model);
+
+		JScrollPane scrollPane = new JScrollPane(table_1);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setSize(273, 123);
+		scrollPane.setLocation(246, 196);
+		scrollPane.setPreferredSize(new Dimension(500, 500));
+
+		panel3.add(scrollPane);
+		
+		Choice choice = new Choice();
+		choice.setForeground(Color.BLACK);
+		for (int i = 1; i <= 15; i++) {
+		    choice.add(Integer.toString(i));
+		}
+		choice.setBounds(330, 353, 98, 22);
+		int indice_partido = Integer.parseInt(choice.getSelectedItem());
+		panel3.add(choice);
+		
+		Partido partidoSeleccionado = partidos.get(indice_partido - 1);
+		String nomEquipo1 = partidoSeleccionado.getEquipo1().getNombre();
+		String nomEquipo2 = partidoSeleccionado.getEquipo2().getNombre();
+		JLabel lblSelecPartido = new JLabel("Seleccione un partido a pronosticar:");
+		
+		lblSelecPartido.setForeground(Color.BLACK);
+		lblSelecPartido.setBounds(284, 331, 210, 16);
+		panel3.add(lblSelecPartido);
+
+		choice.setVisible(false);
+		lblSelecPartido.setVisible(false);
+		scrollPane.setVisible(false);
+		table_1.setVisible(false);
 		rdbtnGanaEquipo1.setVisible(false);
 		rdbtnEmpate.setVisible(false);
         rdbtnGanaEquipo2.setVisible(false);
 		btnCalcPuntaje.setVisible(false);
-		lblSelecOpcion.setVisible(false);
 		lblPartido.setVisible(false);
-		frmtdtxtfldInfoPartido.setVisible(false);
+		panel3.add(lblSelecPartido);
 
 		
 		textFieldNombre.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				String nombre = textFieldNombre.getText(); //ver en que variable se esta guardando
-				textFieldNombre.setVisible(true);
-				lbl_ingreseNombre.setVisible(true);
-				btnCalcPuntaje.setVisible(true);
+		    public void actionPerformed(ActionEvent e) {
+		        String nombre = textFieldNombre.getText();
+		        textFieldNombre.setVisible(true);
+				choice.setVisible(true);
+		        lblSelecPartido.setVisible(true);
+		        scrollPane.setVisible(true);
+		        lbl_ingreseNombre.setVisible(true);
+		        btnCalcPuntaje.setVisible(true);
 		        rdbtnGanaEquipo1.setVisible(true);
 		        rdbtnEmpate.setVisible(true);
 		        rdbtnGanaEquipo2.setVisible(true);
-		        lblSelecOpcion.setVisible(true);
 		        lblPartido.setVisible(true);
-		        frmtdtxtfldInfoPartido.setVisible(true);
-			}
-		
+		        table_1.setVisible(true);      
+
+		        //guardado de datos del pronostico y envio a la base de datos
+		        IngresarDatos dat = new IngresarDatos();
+		        dat.guardarPronostico(nombre, nomEquipo1, ganaEquipo1, empate, ganaEquipo2, nomEquipo2, indice_partido);
+		    }
 		});
+
         return panel3;
     }	
 	}
