@@ -31,6 +31,7 @@ import modelos.IngresarDatos;
 import modelos.Inicio;
 import modelos.Partido;
 import negocios.ObtenerDatos;
+import modelos.CalculadorPuntaje;
 
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
@@ -38,13 +39,14 @@ import javax.swing.JTable;
 import java.awt.Choice;
 import javax.swing.ScrollPaneConstants;
 public class VentanaPrincipal extends JFrame {
-
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldNombre;
 	private CardLayout cardLayout = new CardLayout();
 	protected Container panel2;
 	private JTable table_1;
+
+
 	/**
 	 * Launch the application.
 	 */
@@ -102,7 +104,7 @@ public class VentanaPrincipal extends JFrame {
 	    });
 	    panel.add(item1);
 
-	    JLabel item2 = new JLabel("2. Cargar datos");
+	    JLabel item2 = new JLabel("2. Configurar puntos");
 	    item2.setForeground(Color.BLACK);
 	    item2.setFont(new Font("Georgia", Font.BOLD, 25));
 	    item2.setBounds(173, 193, 475, 50);
@@ -170,7 +172,7 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panel1 = new JPanel();
 	    panel1.setBackground(new Color(0, 100, 0));
 	    panel1.setLayout(null);
-	    
+
 	    JButton btnVolver1 = new JButton("Volver");
 	    btnVolver1.setBounds(684, 532, 93, 23);
 	    btnVolver1.addActionListener(new ActionListener() {
@@ -179,13 +181,13 @@ public class VentanaPrincipal extends JFrame {
 	        }
 	    });
 	    panel1.add(btnVolver1);
-	    
+
 	    JLabel lblPuntajes = new JLabel("---------------------------------------------- Puntajes ----------------------------------------------");
 	    lblPuntajes.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblPuntajes.setFont(new Font("Tahoma", Font.PLAIN, 18));
 	    lblPuntajes.setBounds(0, 10, 787, 49);
 	    panel1.add(lblPuntajes);
-	    
+
 		String[] args = Main.commandLineArgs;
 		Object[][] datosIniciales = Inicio.iniciar(args);
 	    Object[][] data = new Object[datosIniciales.length + 1][];
@@ -193,48 +195,83 @@ public class VentanaPrincipal extends JFrame {
 	    for (int i = 0; i < datosIniciales.length; i++) {
 	        data[i + 1] = datosIniciales[i];
 	    }
-	    
-	    
-	    JTable table = new JTable(data, new String[] {"", ""}); 
+
+
+	    JTable table = new JTable(data, new String[] {"", ""});
 	    table.setBounds(145, 71, 546, 323);
-	    
-	
+
+
 	    panel1.add(table);
-	    
+
 	    return panel1;
-	
+
 	}
-	
+
 	private JPanel crearPanel2(Container panelPrincipal) {
 		JPanel panel2 = new JPanel();
-	    panel2.setBackground(new Color(0, 100, 0));
-	    panel2.setLayout(null);
-	    
-	    JButton btnVolver2 = new JButton("Volver");
-	    btnVolver2.setBounds(731, 527, 93, 23);
-	    btnVolver2.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	cardLayout.show(panelPrincipal, "Panel 0");
-	        }
-	    });
-	    panel2.add(btnVolver2);
-	    
-	    JLabel lblCargaDe = new JLabel("----------------------------------------- Carga de partidos -----------------------------------------");
-	    lblCargaDe.setHorizontalAlignment(SwingConstants.CENTER);
-	    lblCargaDe.setFont(new Font("Tahoma", Font.PLAIN, 18));
-	    lblCargaDe.setBounds(-15, 6, 814, 49);
-	    panel2.add(lblCargaDe);
-	    
-	    return panel2;
+		panel2.setBackground(new Color(0, 100, 0));
+		panel2.setLayout(null);
+
+		JButton btnVolver2 = new JButton("Volver");
+		btnVolver2.setBounds(600, 527, 93, 23);
+		btnVolver2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(panelPrincipal, "Panel 0");
+			}
+		});
+		panel2.add(btnVolver2);
+
+		JLabel lblCargaDe = new JLabel("----------------------------------------- Asignacion de puntos -----------------------------------------");
+		lblCargaDe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCargaDe.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCargaDe.setBounds(-15, 6, 814, 49);
+		panel2.add(lblCargaDe);
+
+		// Primer input y botón
+		JLabel lblLabel1 = new JLabel("Puntos por cada acierto");
+		lblLabel1.setForeground(Color.WHITE);
+		lblLabel1.setBounds(20, 100, 300, 20);
+		panel2.add(lblLabel1);
+
+		JTextField textField1 = new JTextField();
+		textField1.setBounds(200, 100, 150, 20);
+		panel2.add(textField1);
+
+		JButton btnBoton1 = new JButton("Aplicar");
+		btnBoton1.setBounds(textField1.getX() + textField1.getWidth() + 10, 100, 100, 23);
+		btnBoton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int nuevosPuntosPorAcierto = Integer.parseInt(textField1.getText());
+				Inicio.actualizarConfiguracion(nuevosPuntosPorAcierto);
+				System.out.println("Nuevo valor de puntos: " + nuevosPuntosPorAcierto);
+			}
+		});
+		panel2.add(btnBoton1);
+
+		// Segundo input y botón
+		// Segundo input y botón
+		JLabel lblLabel2 = new JLabel("Puntos extra por acertar todo");
+		lblLabel2.setForeground(Color.WHITE);
+		lblLabel2.setBounds(20, 150, 300, 20);
+		panel2.add(lblLabel2);
+
+		JTextField textField2 = new JTextField();
+		textField2.setBounds(200, 150, 150, 20);
+		panel2.add(textField2);
+
+		JButton btnBoton2 = new JButton("Aplicar");
+		btnBoton2.setBounds(textField2.getX() + textField2.getWidth() + 10, 150, 100, 23);
+		btnBoton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int nuevosPuntosPorAciertoTodo = Integer.parseInt(textField2.getText());
+				Inicio.actualizarConfiguracion(nuevosPuntosPorAciertoTodo);
+				System.out.println("Nuevo valor de puntos por acertar todo: " + nuevosPuntosPorAciertoTodo);
+			}
+		});
+		panel2.add(btnBoton2);
+		return panel2;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
     private JPanel crearPanel3(Container panelPrincipal) {
         JPanel panel3 = new JPanel(null); // Establece null para el administrador de diseño
         panel3.setBackground(new Color(0, 100, 0));

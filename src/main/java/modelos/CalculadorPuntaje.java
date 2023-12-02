@@ -3,29 +3,14 @@ package modelos;
 import java.util.ArrayList;
 
 public class CalculadorPuntaje {
-   /* public int calcular(ArrayList<Partido> alResult, ArrayList<Pronostico> alPronost) {
-        try {
-            int puntaje = 0;
-            for (int i = 0; i < alResult.size(); i++) { 
-                ResultadosEnum resultado = null;
-                if (alResult.get(i).getGolesEquipo1() == alResult.get(i).getGolesEquipo2()) {
-                    resultado = ResultadosEnum.EMPATE;
-                } else if (alResult.get(i).getGolesEquipo1() > alResult.get(i).getGolesEquipo2()) {
-                    resultado = ResultadosEnum.GANA_EQUIPO1;
-                } else if (alResult.get(i).getGolesEquipo1() < alResult.get(i).getGolesEquipo2()) {
-                    resultado = ResultadosEnum.GANA_EQUIPO2;
-                }
-                if (resultado == (alPronost.get(i).getResultado())) {
-                    puntaje += 1;
-                }
-            }
-            return puntaje;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0; 
-        }
-    }*/
+	private int puntosPorAcierto;
+
+	public CalculadorPuntaje(int puntosPorAcierto) {
+		this.puntosPorAcierto = puntosPorAcierto;
+	}
+
    public Object[] calcular(ArrayList<Partido> alResult, ArrayList<Pronostico> alPronost) {
+	   System.out.println("Usando puntos configurados: " + puntosPorAcierto);
 	   try {
 		   int puntaje = 0;
 		   String nombre = null;
@@ -44,7 +29,7 @@ public class CalculadorPuntaje {
 				   }
 
 				   if (resultado == alPronost.get(i).getResultado()) {
-					   puntaje += 1;
+					   puntaje += puntosPorAcierto;
 				   }
 
 				   // Si es el primer pronóstico, asignamos el nombre
@@ -62,5 +47,13 @@ public class CalculadorPuntaje {
 		   return new Object[]{null, 0};
 	   }
    }
+
+	public void setPuntosConfiguracion(int puntosPorAcierto) {
+		this.puntosPorAcierto = puntosPorAcierto;
+	}
+
+	public int getPuntosConfiguracion() {
+		return puntosPorAcierto;
+	}
 
 }

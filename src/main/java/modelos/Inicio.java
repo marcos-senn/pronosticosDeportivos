@@ -10,6 +10,12 @@ import datos.ConexionDB;
 import negocios.ObtenerDatos;
 
 public class Inicio {
+    public static CalculadorPuntaje calculadorPuntaje = new CalculadorPuntaje(1);
+
+    public static void actualizarConfiguracion(int nuevaConfiguracion) {
+        calculadorPuntaje.setPuntosConfiguracion(nuevaConfiguracion);
+        System.out.println("Usando puntos configurados: " + calculadorPuntaje.getPuntosConfiguracion());
+    }
     public static Object[][] iniciar(String[] args) {
     	String url = "jdbc:mysql://localhost:3306/programa";
         String username = "root";
@@ -28,8 +34,8 @@ public class Inicio {
                 for (Map.Entry<String, ArrayList<Pronostico>> entry : pronosticosPorParticipante.entrySet()) {
                     ArrayList<Pronostico> pronosticos = entry.getValue();
 
-                    CalculadorPuntaje calculadorPuntaje = new CalculadorPuntaje();
                     Object[] puntaje = calculadorPuntaje.calcular(resultados, pronosticos);
+
 
                     puntajes.add(puntaje);
                 }
