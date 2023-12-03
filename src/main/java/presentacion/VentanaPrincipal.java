@@ -183,6 +183,7 @@ public class VentanaPrincipal extends JFrame {
 	    panel1.add(btnVolver1);
 
 	    JLabel lblPuntajes = new JLabel("---------------------------------------------- Puntajes ----------------------------------------------");
+	    lblPuntajes.setForeground(Color.BLACK);
 	    lblPuntajes.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblPuntajes.setFont(new Font("Tahoma", Font.PLAIN, 18));
 	    lblPuntajes.setBounds(0, 10, 787, 49);
@@ -226,7 +227,13 @@ public class VentanaPrincipal extends JFrame {
 		lblCargaDe.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblCargaDe.setBounds(-15, 6, 814, 49);
 		panel2.add(lblCargaDe);
-
+		
+		JLabel lblNewLabel = new JLabel("Pendiente...");
+        lblNewLabel.setForeground(new Color(0, 0, 0));
+        lblNewLabel.setFont(new Font("Palatino Linotype", Font.BOLD, 20));
+        lblNewLabel.setBounds(345, 147, 142, 39);
+        panel2.add(lblNewLabel);
+/*
 		// Primer input y botón
 		JLabel lblLabel1 = new JLabel("Puntos por cada acierto");
 		lblLabel1.setForeground(Color.WHITE);
@@ -268,7 +275,8 @@ public class VentanaPrincipal extends JFrame {
 				System.out.println("Nuevo valor de puntos por acertar todo: " + nuevosPuntosPorAciertoTodo);
 			}
 		});
-		panel2.add(btnBoton2);
+		panel2.add(btnBoton2);*/
+		
 		return panel2;
 	}
 
@@ -276,9 +284,24 @@ public class VentanaPrincipal extends JFrame {
         JPanel panel3 = new JPanel(null); // Establece null para el administrador de diseño
         panel3.setBackground(new Color(0, 100, 0));
         
+        JLabel lblNewLabel = new JLabel("Pendiente...");
+        lblNewLabel.setForeground(new Color(0, 0, 0));
+        lblNewLabel.setFont(new Font("Palatino Linotype", Font.BOLD, 20));
+        lblNewLabel.setBounds(345, 147, 142, 39);
+        panel3.add(lblNewLabel);
+        
+        JButton btnVolver3 = new JButton("Volver");
+		btnVolver3.setForeground(Color.BLACK);
+		btnVolver3.setBounds(684, 532, 93, 23);
+		btnVolver3.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	cardLayout.show(panelPrincipal, "Panel 0");
+	        }
+	    });
+		panel3.add(btnVolver3);
         
         contentPane.setLayout(null);
-
+/*
         JButton btnCalcPuntaje = new JButton("Ver puntaje");
         btnCalcPuntaje.setForeground(Color.BLACK);
 		btnCalcPuntaje.setFont(new Font("Verdana", Font.PLAIN, 11));
@@ -329,15 +352,6 @@ public class VentanaPrincipal extends JFrame {
 		boolean empate = rdbtnEmpate.isSelected();
 		boolean ganaEquipo2 = rdbtnGanaEquipo2.isSelected();
 		
-		JButton btnVolver3 = new JButton("Volver");
-		btnVolver3.setForeground(Color.BLACK);
-		btnVolver3.setBounds(684, 532, 93, 23);
-		btnVolver3.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	cardLayout.show(panelPrincipal, "Panel 0");
-	        }
-	    });
-		panel3.add(btnVolver3);
 		
 		JLabel lblPronstico = new JLabel("---------------------------------------------- Pronóstico ----------------------------------------------");
 		lblPronstico.setForeground(Color.BLACK);
@@ -446,7 +460,7 @@ public class VentanaPrincipal extends JFrame {
 		        dat.guardarPronostico(nombre, nomEquipo1, ganaEquipo1, empate, ganaEquipo2, nomEquipo2, indice_partido);
 		    }
 		});
-
+*/
         return panel3;
     }	
 	}
